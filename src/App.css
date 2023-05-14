@@ -1,0 +1,35 @@
+body {
+  text-align: center;
+  background-color: #353740;
+}
+h1 {
+  color: white;
+}
+div {
+  color: white;
+}
+
+input {
+  margin: 10px;
+}
+
+.feed {
+  overflow: scroll;
+  width: 100%;
+  padding: 0;
+}
+
+.feed li {
+  display: flex;
+  background-color: #444654;
+  width: 100%;
+  padding: 20px;
+  margin: 20px 0;
+}
+.feed p {
+  text-align: left;
+  color: white;
+}
+.feed p.role {
+  min-width: 100px;
+}
