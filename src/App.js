@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-    <h1>Chat with any pdf</h1>
+    <h1 style={{textAlign:'center'}} >Chat with any pdf</h1>
       <Routes>
         <Route path="/" element={<PdfUpload />} />
         <Route path="/chat" element={<Chat />} />

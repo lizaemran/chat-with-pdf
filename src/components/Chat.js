@@ -85,13 +85,13 @@ function Chat() {
       isLoading(false);
       setMessages([
         ...messages,
-        { role: "user", content: prompt },
-        data.response[0].message,
+        { role: "user:", content: prompt },
+        { role: "assistant:", content: data.response.content },
       ]);
       setMessageData([
         ...messageData,
-        { role: "user", content: prompt },
-        data.response[0].message,
+        { role: "user:", content: prompt },
+        { role: "assistant:", content: data.response.content },
       ]);
     } catch (error) {
       isLoading(false)
@@ -99,15 +99,16 @@ function Chat() {
     }
   };
   return (
-    <>
-      <div>{welcome}</div>
+    <div style={{display: 'flex', flexDirection:'column', alignItems: "center", justifyContent:'center',width: '80%', margin:'auto' }}>
+      <div style={{border:'3px solid #404040', backgroundColor: '#404040', padding:'2rem', borderRadius:'1rem', lineHeight: '1.75rem', letterSpacing:'0.2px' }}>{welcome}</div>
       <h1>you can ask for example</h1>
+      <div style={{display: "flex", flexDirection:"column", alignItems: 'start', }}>
       {!loadingWelcome ? (
-        questions.map((item,key) => <div key={key}>➤{item}</div>)
+        questions.map((item,key) => <div style={{paddingTop: "0.5rem"}}key={key}>➤{item}</div>)
       ) : (
         <h3>Thinking...</h3>
       )}
-      {errorMessage}
+      </div>
       <ul className="feed">
         {messageData.map((item, key) => (
           <li key={key}>
@@ -118,17 +119,18 @@ function Chat() {
       </ul>
       {!loading ? (
         <form onSubmit={handleFormSubmit}>
-          <input
+          <textarea
             placeholder="Send a message"
             onChange={handleChange}
             id="input"
+            style={{backgroundColor: 'white', border: "4px solid #dcdee5", borderRadius: '1rem', width: "75rem", height:'5rem', padding:'1rem'}}
           />
-          <button type="submit">➤</button>
+          <button style={{backgroundColor:'#5932ef', border:'1px solid #5133c6'}} type="submit">Submit</button>
         </form>
       ) : (
         <h3>Thinking...</h3>
       )}
-    </>
+    </div>
   );
 }
 

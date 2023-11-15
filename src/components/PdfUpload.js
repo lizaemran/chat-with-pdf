@@ -41,10 +41,13 @@ function PdfUpload() {
       {!loading ? (
         <form onSubmit={handleFormSubmit}>
           <input
-            type="file"
+             type="file"
+            // id="file"
             accept=".pdf"
             onChange={handleFileChange}
           />
+            {/* <label for="file" className="btn-2">upload</label> */}
+
           <button type="submit">➤</button>
         </form>
       ) : (
