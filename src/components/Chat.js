@@ -19,17 +19,16 @@ function Chat() {
   useEffect(() => {
     async function fetchData() {
       try{
-      console.log("welcome--->", state[1].content);
-      setWelcome(state[1].content);
+      console.log("welcome--->", state);
+      setWelcome(state.content);
       isLoadingWelcome(true);
       const { data } = await axios.post(
-        "https://chat-gpt-clone-seven-coral.vercel.app/api/chat",
+        "http://localhost:7000/api/chat",
         {
-          messages: [
-            ...state,
+          message: [
             {
               role: "user",
-              content: "list down some questions regarding this text",
+              content: `list down some questions regarding this text: ${state.content}`,
             },
           ],
         },
@@ -40,21 +39,19 @@ function Chat() {
         }
       );
       isLoadingWelcome(false);
-      console.log("Questions-->", data.response[0].message.content);
+      console.log("Questions-->", data.response.content);
+      setQuestions( data.response.content.split('\n'));
+
       setMessages([
         ...state,
         {
           role: "user",
           content: "list down some questions regarding this text",
         },
-        data.response[0].message,
+        data.response.content,
       ]);
 
-      let questionsArr = data.response[0].message.content
-        .split(/\d+\./)
-        .filter(Boolean);
 
-      setQuestions(questionsArr);
     }catch(e) {
       isLoading(false)
       setErrorMessage(e.message);
@@ -77,8 +74,8 @@ function Chat() {
 
     try {
       const { data } = await axios.post(
-        "https://chat-gpt-clone-seven-coral.vercel.app/api/chat",
-        { messages: messagesArr },
+        "http://localhost:7000/api/chat",
+        { message: messagesArr },
         {
           headers: {
             "Content-Type": "application/json",

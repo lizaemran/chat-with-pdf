@@ -24,7 +24,7 @@ function PdfUpload() {
     formData.append("file", file);
     try {
       const { data } = await axios.post(
-        "https://chat-gpt-clone-seven-coral.vercel.app/api/upload",
+        "http://localhost:7000/api/upload",
         formData
       );
       console.log("upload response", data.response);
