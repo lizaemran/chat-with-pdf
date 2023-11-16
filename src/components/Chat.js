@@ -118,14 +118,14 @@ function Chat() {
         ))}
       </ul>
       {!loading ? (
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} style={{textAlign:'center'}}>
           <textarea
             placeholder="Send a message"
             onChange={handleChange}
             id="input"
             style={{backgroundColor: 'white', border: "4px solid #dcdee5", borderRadius: '1rem', width: "75rem", height:'5rem', padding:'1rem'}}
           />
-          <button style={{backgroundColor:'#5932ef', border:'1px solid #5133c6'}} type="submit">Submit</button>
+          <button style={{margin: '20px 0', backgroundColor:'#5932ef', border:'1px solid #5133c6', width: '6.5rem', height: '2.5rem', color:'white', borderRadius:'0.5rem'}} type="submit">Ask Assistant</button>
         </form>
       ) : (
         <h3>Thinking...</h3>

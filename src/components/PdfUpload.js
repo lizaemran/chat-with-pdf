@@ -39,7 +39,7 @@ function PdfUpload() {
   return (
     <>
       {!loading ? (
-        <form onSubmit={handleFormSubmit}>
+        <form style={{textAlign:'center'}} onSubmit={handleFormSubmit}>
           <input
              type="file"
             // id="file"
@@ -51,7 +51,7 @@ function PdfUpload() {
           <button type="submit">➤</button>
         </form>
       ) : (
-        <h3>Thinking...</h3>
+        <h3 style={{textAlign:'center'}}>Thinking...</h3>
       )}
       {errorMessage}
     </>
